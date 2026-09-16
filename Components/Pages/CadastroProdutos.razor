@@ -1,0 +1,74 @@
+﻿@page "/cadastro-produto"
+
+<PageTitle>Cadastro de Produto</PageTitle>
+
+<div class="pagina-produto">
+
+    <div class="overlay"></div>
+
+    <div class="card-produto">
+
+        <div class="titulo-produto">
+            <h1>Flora Click</h1>
+            <p>CADASTRO DE PRODUTOS</p>
+        </div>
+
+        <div class="grupo">
+            <label>Nome do Produto</label>
+            <input type="text" placeholder="Ex: Buquê de Rosas Vermelhas" />
+        </div>
+
+        <div class="grupo">
+            <label>Descrição</label>
+            <textarea placeholder="Descreva o produto"></textarea>
+        </div>
+
+        <div class="linha">
+
+            <div class="grupo">
+                <label>Categoria</label>
+
+                <select>
+                    <option>Buquê</option>
+                    <option>Arranjo</option>
+                    <option>Flor</option>
+                    <option>Vaso</option>
+                    <option>Cesta de Presentes</option>
+                    <option>Planta</option>
+                </select>
+
+            </div>
+
+            <div class="grupo">
+                <label>Preço (R$)</label>
+                <input type="number" step="0.01" placeholder="0,00" />
+            </div>
+
+        </div>
+
+        <div class="linha">
+
+            <div class="grupo">
+                <label>Quantidade em Estoque</label>
+                <input type="number" placeholder="0" />
+            </div>
+
+            <div class="grupo">
+                <label>Cor predominante</label>
+                <input type="text" placeholder="Ex: Vermelho" />
+            </div>
+
+        </div>
+
+        <div class="grupo">
+            <label>Imagem do Produto</label>
+            <input type="file" />
+        </div>
+
+        <button class="btn-salvar">
+            CADASTRAR PRODUTO
+        </button>
+
+    </div>
+
+</div>
