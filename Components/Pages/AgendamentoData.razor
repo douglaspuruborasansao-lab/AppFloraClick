@@ -1,4 +1,5 @@
-﻿@page "/agendamento-data"
+﻿```razor
+@page "/agendamento-data"
 @using AppFloraClick.Models
 @using AppFloraClick.DAO
 
@@ -38,7 +39,6 @@
 
             <div class="campo">
                 <label>Tipo da Data</label>
-
                 <select @bind="tipoData">
                     <option value="">Selecione</option>
                     <option value="Aniversário">Aniversário</option>
@@ -51,7 +51,6 @@
 
             <div class="campo">
                 <label>Data</label>
-
                 <input type="date" @bind="dataEspecial" />
             </div>
 
@@ -59,66 +58,60 @@
 
         <div class="campo">
             <label>Observação</label>
-
             <textarea @bind="observacao"
-                          placeholder="Ex.: Enviar promoção de buquê de rosas">
-            </textarea>
-            </div>
+                      placeholder="Ex.: Enviar promoção de buquê de rosas"></textarea>
+        </div>
 
-            <div class="botoes">
+        <div class="botoes">
 
-                <button class="btn-cadastrar"
-                        @onclick="Cadastrar">
-                    Cadastrar Data
-                </button>
-
-            </div>
-
-            <div class="linha"></div>
-
-            <h3>Datas Cadastradas</h3>
-
-            <table>
-
-                <thead>
-                    <tr>
-                        <th>Cliente</th>
-                        <th>Telefone</th>
-                        <th>Tipo</th>
-                        <th>Data</th>
-                        <th>Ação</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-
-                    @foreach (var item in agendamentos)
-                    {
-                        <tr>
-                            <td>@item.nome_cli_age</td>
-
-                            <td>@item.telefone_age</td>
-
-                            <td>@item.tipo_data_age</td>
-
-                            <td>@item.data_age.ToString("dd/MM/yyyy")</td>
-
-                            <td>
-                                <button class="btn-excluir"
-                                        @onclick="() => Excluir(item)">
-                                    Excluir
-                                </button>
-                            </td>
-                        </tr>
-                    }
-
-                </tbody>
-
-            </table>
+            <button class="btn-cadastrar"
+                    @onclick="Cadastrar">
+                Cadastrar Data
+            </button>
 
         </div>
 
+        <div class="linha"></div>
+
+        <h3>Datas Cadastradas</h3>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Telefone</th>
+                    <th>Tipo</th>
+                    <th>Data</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in agendamentos)
+                {
+                    <tr>
+                        <td>@item.nome_cli_age</td>
+                        <td>@item.telefone_age</td>
+                        <td>@item.tipo_data_age</td>
+                        <td>@item.data_age.ToString("dd/MM/yyyy")</td>
+                        <td>
+                            <button class="btn-excluir"
+                                    @onclick="() => Excluir(item)">
+                                Excluir
+                            </button>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
     </div>
+
+</div>
 
 @code {
 
@@ -129,61 +122,42 @@
     private AgendamentoDataDAO dao = new AgendamentoDataDAO();
 
     private string nomeCliente = "";
-
     private string telefone = "";
-
     private string tipoData = "";
-
     private string observacao = "";
 
     private DateTime dataEspecial = DateTime.Today;
-
 
     protected override void OnInitialized()
     {
         CarregarAgendamentos();
     }
 
-
     private void Cadastrar()
     {
         agendamento.nome_cli_age = nomeCliente;
-
         agendamento.telefone_age = telefone;
-
         agendamento.tipo_data_age = tipoData;
-
         agendamento.data_age = dataEspecial;
-
         agendamento.observacao_age = observacao;
-
 
         dao.Inserir(agendamento);
 
-
         nomeCliente = "";
-
         telefone = "";
-
         tipoData = "";
-
         observacao = "";
-
         dataEspecial = DateTime.Today;
-
 
         agendamento = new Agendamento();
 
-
         CarregarAgendamentos();
     }
-
 
     private void CarregarAgendamentos()
     {
         agendamentos = dao.Listar();
     }
-
 
     private void Excluir(Agendamento item)
     {
@@ -192,3 +166,4 @@
         CarregarAgendamentos();
     }
 }
+```
